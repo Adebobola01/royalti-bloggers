@@ -1,4 +1,3 @@
-const { ObjectId } = require("bson");
 const {Schema, model} = require("mongoose");
 
 
@@ -17,3 +16,5 @@ const blogSchema = new Schema({
         required: true
     }
 })
+
+module.exports = model("Blog", blogSchema);
