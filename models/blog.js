@@ -3,7 +3,7 @@ const {Schema, model} = require("mongoose");
 
 
 const blogSchema = new Schema({
-    author: {
+    authorId: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
