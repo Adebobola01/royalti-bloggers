@@ -19,3 +19,5 @@ router.post("/editBlog", (req, res, next)=>{
     const updatedBlog = editBlog(title, content, blogId);
     res.redirect("/blogs");
 })
+
+module.exports = router;

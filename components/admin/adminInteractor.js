@@ -1,3 +1,5 @@
+//This file contain all the business logic of the app
+
 const {createBlogPersistence, deleteBlogPersistence, editBlogPersistence} = require("./adminPersistence");
 
 

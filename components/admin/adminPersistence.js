@@ -1,3 +1,5 @@
+//This file contains all database related codes
+
 const Blog = require("../../models/blog");
 
 exports.createBlogPersistence = async (title, content, authorId) =>{
