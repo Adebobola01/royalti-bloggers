@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> <%= pageTitle %> </title>
+<%- include("./includes/head.ejs") %>
+    <title> home</title>
+    <link rel="stylesheet" href="/css/home.css" >
+    <link rel="stylesheet" href="/css/main.css" >
+
 </head>
 <body>
+    <%- include("./includes/header.ejs") %>
     <main>
-        <h1>My body is here</h1>
+        <%- include("./includes/sidebar.ejs") %>
+        <section class="main">
+            <div class="blog-container" >
+                <div class="title-container" >
+                    <h2>My first blog post</h2>
+                    <div class="title-details">
+                        <span>3 days ago</span>
+                        <span>Adebobola Oyedunmade</span>
+                    </div>
+                </div>
+                <p class="blog-content" >
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
+                </p>
+            </div>
+        </section>
     </main>
 </body>
 </html>

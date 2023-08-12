@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
@@ -12,15 +13,17 @@ const adminRoutes = require("./components/admin/adminRoute");
 const homeRoutes = require("./components/home/homeRoute");
 const {MONGODB_URI, PORT} = require("./config");
 
-const store = new MongoDbStore({
-    uri: MONGODB_URI,
-    collection: "sessions",
-});
+// const store = new MongoDbStore({
+//     uri: MONGODB_URI,
+//     collection: "sessions",
+// });
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,7 +32,7 @@ app.use(session({
     secret: 'keyboard cat my session',
     resave: false,
     saveUninitialized: true,
-    store: store,
+    // store: store,
     cookie: { secure: false }
 }));
 app.use(flash());  
@@ -37,14 +40,14 @@ app.use(homeRoutes);
 app.use(authRoutes);
 app.use(adminRoutes);
 
-mongoose
-    .connect(MONGODB_URI)
-    .then(async (result) => {
+// mongoose
+//     .connect(MONGODB_URI)
+//     .then(async (result) => {
         app.listen(PORT, () => {
             console.log("connected at localhost:3000");
         });
-    })
-    .catch((error) => {
-        console.log(error)
-    }
-);
+//     })
+//     .catch((error) => {
+//         console.log(error)
+//     }
+// );
