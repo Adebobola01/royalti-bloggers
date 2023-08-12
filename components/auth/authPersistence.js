@@ -1,10 +1,8 @@
 const User = require("../../models/user");
-const flash = require("connect-flash");
 
 exports.createUserPersistence = async(email, username, password)=>{
     const existingUser = await User.findOne({email: email});
     if(existingUser) {
-        console.log("persistence err")
         throw new Error("email is already in use!");
     }
 
@@ -16,4 +14,13 @@ exports.createUserPersistence = async(email, username, password)=>{
     }).save();
 
     return newUser;
+}
+
+exports.loginPersistence = async({email, password})=>{
+    const user = await User.findOne({email: email});
+    if(!(user.password === password)){
+        throw new Error("Invalid password, please try again!")
+    }
+
+    return user;
 }
