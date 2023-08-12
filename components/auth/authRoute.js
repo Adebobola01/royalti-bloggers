@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 const {createUserInteractor, loginInteractor} = require("./authInteractor");
+
 
 router.get("/signup", (req, res, next)=>{
     res.render("auth/signup", {
@@ -13,9 +15,9 @@ router.get("/signup", (req, res, next)=>{
 
 router.post("/signup", async(req, res, next)=>{
     const {email, username, password} = req.body;
-    let result;
+    const hash = await bcrypt.hash(password, 10)
     try {
-        result = await createUserInteractor(email, password, username);
+        await createUserInteractor(email, hash, username);
     } catch (error) {
         req.flash("signupErr", error.message);
         return res.redirect("/signup");
@@ -32,8 +34,16 @@ router.get("/login", (req, res, next)=>{
 
 router.post("/login", async (req, res, next)=>{
     const {email, password} = req.body;
+
     try {
-        const user = await loginInteractor({email,password})
+        const user = await loginInteractor({email});
+        const hash = user.password;
+        const isEqual = await bcrypt.compare(password, hash);
+        if(!isEqual){
+            throw new Error("invalid password, please try again!");
+        }
+        req.session.isLoggedIn = true;
+        req.session.user = user;
     } catch (error) {
         req.flash("loginErr", error.message);
         console.log(error)

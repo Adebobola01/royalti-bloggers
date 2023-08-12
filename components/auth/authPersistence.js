@@ -18,9 +18,10 @@ exports.createUserPersistence = async(email, username, password)=>{
 
 exports.loginPersistence = async({email, password})=>{
     const user = await User.findOne({email: email});
-    if(!(user.password === password)){
-        throw new Error("Invalid password, please try again!")
-    }
-
     return user;
+}
+
+exports.getUserHash = async({email})=>{
+    const user = await User.findOne({email: email});
+    return user.password;
 }
