@@ -1,5 +1,45 @@
 
 
 .blog-container{
-    width: 20rem;
+    width: 70%;
+    margin-bottom: 4rem;
+}
+
+.blog-content{
+    font-size: 18px;
+    font-weight: 400;
+    color: #626262;
+}
+
+.title-container > h2{
+    margin: 0 0 .5rem;
+}
+
+.title-details{
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.title-details > span:first-of-type{
+    font-size: 12px;
+    font-weight: 400;
+    color: #626262;
+    
+}
+.title-details > span:last-of-type{
+    font-weight: 500;
+    margin-left: 4rem;
+}
+
+.blog-btn{
+    display: flex;
+    padding: 10px 37px;
+    justify-content: center;
+    align-items: center;
+    background-color: #D0D0D0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
 }

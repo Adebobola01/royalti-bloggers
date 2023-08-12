@@ -7,13 +7,16 @@ body{
 }
 
 .sidebar{
-    position: sticky;
+    position: fixed;
     left: 0;
-    height: 100vh;
+    top: 90px;
+    /* bottom: 0; */
+    /* height: 100vh; */
     border-right: 1px solid #000;
     padding: 2rem 2rem;
     display: flex;
     flex-direction: column;
+    /* width: 20rem; */
 }
 
 .sidebar > nav, .sidebar > div{
@@ -42,12 +45,15 @@ body{
 
 main{
     position: relative;
-    display: flex;
+    /* display: flex; */
     margin: 0;
 }
 
 .main{
     padding: 1rem 3rem;
+    overflow-y: scroll;
+    margin-left: 164px;
+    z-index: 1;
 }
 
 header{
@@ -55,6 +61,11 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0 3rem;
+    border-bottom: 1px solid #000;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
 }
 
 form > input{
