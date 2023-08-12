@@ -11,13 +11,14 @@ router.post("/signup", (req, res, next)=>{
     }
 
     const {username, password, email} = req.body;
-    console.log(username, password, email);
+    console.log(username, password, email, req.body);
     res.status(201).json({message: "success", username, password, email});
 })
 
-router.get("/sign", (req, res, next)=>{
-    console.log("here");
-   return res.status(200).json({message: "here"});
+router.get("/signup", (req, res, next)=>{
+    res.render("auth/signup", {
+        pageTitle: "Signup"
+    })
 })
 
 module.exports = router;

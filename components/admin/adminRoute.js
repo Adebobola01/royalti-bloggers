@@ -20,4 +20,17 @@ router.post("/editBlog", (req, res, next)=>{
     res.redirect("/blogs");
 })
 
+router.post("/createBlog", (req, res, next)=>{
+    const {title, content, authorId} = req.body;
+    const newBlog = createBlog(title, content, authorId);
+    res.redirect(`/blog/${newBlog._id}`);
+
+})
+
+router.post("/deleteBlog", (req, res, next)=>{
+    const {blogId} = req.body;
+    deleteBlog(blogId);
+    res.redirect("/")
+})
+
 module.exports = router;
