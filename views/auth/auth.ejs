@@ -1,0 +1,44 @@
+<%- include("../includes/head.ejs") %>
+    <link rel="stylesheet" href="/css/auth.css">
+    <title> <%= pageTitle %> </title>
+</head>
+<body>
+    <main>
+        <% if(errMsg) {%>
+            <p>
+                <%= errMsg %>
+            </p>
+        <% } %>
+        <form action="/signup" method="post" class="auth-form">
+            <h2><%= pageHeader %></h2>
+
+            <% if(pageTitle === "Signup") {%>
+                <div>
+                    <label for="username">Name</label>
+                    <input name="username" placeholder="John Doe" type="text" />
+                </div> 
+            <% } %>
+
+            <div>
+                <label for="email">Email</label>
+                <input name="email" placeholder="example@gmail.com" type="email" />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input name="password" placeholder="enter password" type="password" />
+            </div>
+            <% if(pageTitle === "Signup") {%>
+                <div>
+                    <label for="password">Confirm Password</label>
+                    <input name="password" placeholder="Confirm password" type="password" />
+                </div>
+            <% } %>
+            <button type="submit">submit</button>
+            <% if(pageTitle === "Signup") {%>
+                <p>Already have an account? <a href="/login" >Login</a></p>
+            <% } %>
+        </form>
+    </main>
+    
+</body>
+</html>

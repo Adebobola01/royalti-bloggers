@@ -6,8 +6,9 @@ const {createUserInteractor, loginInteractor} = require("./authInteractor");
 
 
 router.get("/signup", (req, res, next)=>{
-    res.render("auth/signup", {
+    res.render("auth/auth", {
         pageTitle: "Signup",
+        pageHeader: "Register",
         errMsg: req.flash("signupErr")
     })
 })
@@ -26,8 +27,9 @@ router.post("/signup", async(req, res, next)=>{
 })
 
 router.get("/login", (req, res, next)=>{
-    res.render("auth/login", {
+    res.render("auth/auth", {
         pageTitle: "Login",
+        pageHeader: "Login",
         errMsg: req.flash("loginErr")
     });
 })
