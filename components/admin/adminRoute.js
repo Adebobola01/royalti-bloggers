@@ -20,10 +20,15 @@ router.post("/editBlog", (req, res, next)=>{
     res.redirect("/blogs");
 })
 
+router.get("/createBlog", (req, res, next)=>{
+    res.render("admin/create")
+})
+
 router.post("/createBlog", (req, res, next)=>{
     const {title, content, authorId} = req.body;
-    const newBlog = createBlog(title, content, authorId);
-    res.redirect(`/blog/${newBlog._id}`);
+    console.log(title, content)
+    // const newBlog = createBlog(title, content, authorId);
+    // res.redirect(`/blog/${newBlog._id}`);
 
 })
 

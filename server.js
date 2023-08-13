@@ -38,7 +38,7 @@ app.use(session({
 app.use(flash());  
 app.use(homeRoutes);
 app.use(authRoutes);
-app.use(adminRoutes);
+app.use("/admin", adminRoutes);
 
 // mongoose
 //     .connect(MONGODB_URI)
