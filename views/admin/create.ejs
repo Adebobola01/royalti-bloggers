@@ -2,14 +2,14 @@
     <link rel="stylesheet" href="/css/create.css" >
 </head>
 <body>
-    <%- include("../includes/header.ejs")%>
+    <%- include("../includes/header.ejs", {isAuth: isAuthenticated, user: user})%>
     <main>
         <%- include("../includes/sidebar.ejs") %>
         <section class="main">
             <form method="post" action="/admin/createBlog" class="create-form" >
-                <button type="submit" class="create-form-btn" >Create Post</button>
-                <input type="text" placeholder="Post Title ....." class="post-title-input" name="title" />
-                <textarea class="post-content-input" name="content" >Enter blog content here!....</textarea>
+                <button type="submit" class="create-form-btn" ><%= title %> Post</button>
+                <input type="text" placeholder="Post Title ....." class="post-title-input" name="title" value="<%= blogTitle %>" />
+                <textarea class="post-content-input" name="content" placeholder="Enter blog content here!"><%= blogContent %></textarea>
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
             </form>
         </section>

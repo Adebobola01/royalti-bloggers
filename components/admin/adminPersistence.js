@@ -15,7 +15,12 @@ exports.createBlogPersistence = async (title, content, authorId, authorName) =>{
 }
 
 exports.deleteBlogPersistence = async (blogId)=>{
-    const blog = await Blog.findOne({_id: blogId}).delete().save();
+    try {
+        const blog = await Blog.findByIdAndDelete(blogId);
+        return blog;
+    } catch (error) {
+        throw new Error("could not delete post at this time, please try again later");
+    }
 }
 
 exports.editBlogPersistence = async(updateTitle, updatedContent, blogId)=>{

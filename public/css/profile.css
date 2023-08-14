@@ -22,6 +22,10 @@
     font-size: .9rem;
 }
 
+.admin-ctas > div > a:hover{
+    opacity: .7;
+}
+
 .admin-ctas > div > a > svg{
     width: 16px;
     height: 16px;

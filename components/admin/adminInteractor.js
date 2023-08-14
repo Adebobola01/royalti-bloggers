@@ -8,7 +8,12 @@ exports.createBlog = async(title, content, authorId, authorName) =>{
 }
 
 exports.deleteBlog = async(blogId)=>{
-    await deleteBlogPersistence(blogId)
+    try {
+        const deletedBlog = await deleteBlogPersistence(blogId);
+        return deletedBlog;
+    } catch (error) {
+        throw error;
+    }
 }
 
 exports.editBlog = async (title, content, blogId)=>{
