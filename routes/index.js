@@ -6,8 +6,8 @@ const homeRoutes = require("../components/home");
 
 const router = express.Router();
 
-app.use(homeRoutes);
-app.use(authRoutes);
-app.use("/admin", adminRoutes);
+router.use(homeRoutes);
+router.use(authRoutes);
+router.use("/admin", adminRoutes);
 
 module.exports = router;

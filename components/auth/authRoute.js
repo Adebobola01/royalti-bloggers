@@ -9,16 +9,18 @@ router.get("/signup", (req, res, next)=>{
     res.render("auth/auth", {
         pageTitle: "Signup",
         pageHeader: "Register",
+        formAction: "/signup",
         errMsg: req.flash("signupErr")
     })
 })
 
 
 router.post("/signup", async(req, res, next)=>{
-    const {email, username, password} = req.body;
+    const {email, name, password} = req.body;
+    console.log(email, password, name)
     const hash = await bcrypt.hash(password, 10)
     try {
-        await createUserInteractor(email, hash, username);
+        await createUserInteractor(email, hash, name);
     } catch (error) {
         req.flash("signupErr", error.message);
         return res.redirect("/signup");
@@ -30,6 +32,7 @@ router.get("/login", (req, res, next)=>{
     res.render("auth/auth", {
         pageTitle: "Login",
         pageHeader: "Login",
+        formAction: "/login",
         errMsg: req.flash("loginErr")
     });
 })

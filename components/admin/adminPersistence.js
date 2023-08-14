@@ -6,7 +6,9 @@ exports.createBlogPersistence = async (title, content, authorId) =>{
     const newBlog = await new Blog({
         title: title,
         content: content,
-        authorId: authorId
+        authorId: authorId,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
     }).save();
     return newBlog;
 }
@@ -19,6 +21,7 @@ exports.editBlogPersistence = async(updateTitle, updatedContent, blogId)=>{
     const blog = await Blog.findOne({_id: blogId});
     blog.title = updateTitle;
     blog.content = updatedContent;
+    blog.updatedAt = Date.now();
     const updatedBlog = await blog.save();
     return updatedBlog;
 }

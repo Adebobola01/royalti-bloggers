@@ -9,13 +9,13 @@
                 <%= errMsg %>
             </p>
         <% } %>
-        <form action="/signup" method="post" class="auth-form">
+        <form action="<%= formAction %>" method="post" class="auth-form">
             <h2><%= pageHeader %></h2>
 
             <% if(pageTitle === "Signup") {%>
                 <div>
-                    <label for="username">Name</label>
-                    <input name="username" placeholder="John Doe" type="text" />
+                    <label for="name">Name</label>
+                    <input name="name" placeholder="John Doe" type="text" />
                 </div> 
             <% } %>
 
@@ -29,8 +29,8 @@
             </div>
             <% if(pageTitle === "Signup") {%>
                 <div>
-                    <label for="password">Confirm Password</label>
-                    <input name="password" placeholder="Confirm password" type="password" />
+                    <label for="ConfirmPassword">Confirm Password</label>
+                    <input name="confirmPassword" placeholder="Confirm password" type="password" />
                 </div>
             <% } %>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>

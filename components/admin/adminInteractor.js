@@ -3,8 +3,8 @@
 const {createBlogPersistence, deleteBlogPersistence, editBlogPersistence} = require("./adminPersistence");
 
 
-exports.createBlog = (title, content, authorId) =>{
-    const createdBlog = createBlogPersistence(title, content, authorId);
+exports.createBlog = async(title, content, authorId) =>{
+    const createdBlog = await createBlogPersistence(title, content, authorId);
 }
 
 exports.deleteBlog = async(blogId)=>{

@@ -1,8 +1,8 @@
 const {createUserPersistence, loginPersistence} = require("./authPersistence");
 
-exports.createUserInteractor = async(email, password, username)=>{
+exports.createUserInteractor = async(email, hash, name)=>{
     try {
-        const user = await createUserPersistence(email, username, password);
+        const user = await createUserPersistence(email, name, hash);
         return user;
     } catch (error) {
         throw error;

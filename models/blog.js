@@ -7,12 +7,24 @@ const blogSchema = new Schema({
         ref: "User",
         required: true
     },
+    authorName: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true,
     },
     content: {
         type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+    },
+    updatedAt: {
+        type: Date,
         required: true
     }
 })

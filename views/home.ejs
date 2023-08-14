@@ -9,107 +9,28 @@
         <%- include("./includes/sidebar.ejs") %>
         <section class="main">
             <h2>Posts</h2>
-            <div class="blogs">
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
-                <a href="/blog/id" class="blog-container" >
-                    <div class="title-container" >
-                        <div class="title-details">
-                            <span></span>
-                            <span>Adebobola Oyedunmade</span>
-                            <span>3 days ago</span>
-                        </div>
-                        <h2>My first blog post</h2>
-                    </div>
-                    <p class="blog-content" >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste repellat, dolorem assumenda ut cupiditate suscipit, odit quaerat veritatis ab eum laudantium! Dolore ab quos voluptatibus omnis officia quibusdam officiis vero!
-                    </p>
-                    <button class="blog-btn" >Read More</button>
-                </a>
+            <div class="blogs"> 
+                <% if (blogs.length > 0) { %>
+                    <% for (let blog of blogs) { %>
+                        <a href="/blog/id" class="blog-container" >
+                            <div class="title-container" >
+                                <div class="title-details">
+                                    <span></span>
+                                    <span>Adebobola Oyedunmade</span>
+                                    <span>3 days ago</span>
+                                </div>
+                                <h2><%= blog.title %></h2>
+                            </div>
+                            <p class="blog-content" >
+                                <%= blog.content %>
+                            </p>
+                            <button class="blog-btn" >Read More</button>
+                        </a>
+                    <% } %>
+                <% } else { %>
+                    <h1>No Blogs Found!</h1>
+                <% } %>
             </div>
-            
             
         </section>
     </main>

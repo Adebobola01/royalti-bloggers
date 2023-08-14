@@ -24,11 +24,12 @@ router.get("/createBlog", (req, res, next)=>{
     res.render("admin/create")
 })
 
-router.post("/createBlog", (req, res, next)=>{
+router.post("/createBlog", async (req, res, next)=>{
     const {title, content, authorId} = req.body;
     console.log(title, content)
-    // const newBlog = createBlog(title, content, authorId);
+    const newBlog = await createBlog(title, content, req.user._id);
     // res.redirect(`/blog/${newBlog._id}`);
+    res.redirect("/");
 
 })
 
