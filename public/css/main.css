@@ -54,7 +54,6 @@ main{
 
 .main{
     padding: 1rem 3rem;
-    overflow-y: scroll;
     margin-left: 164px;
     z-index: 1;
 }
@@ -81,7 +80,7 @@ header{
 header > span{
     width: 3rem;
     height: 3rem;
-    background-color: aqua;
+    background-color: #3217DA;
     border-radius: 50%;
 }
 

@@ -33,6 +33,7 @@
                     <input name="password" placeholder="Confirm password" type="password" />
                 </div>
             <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
             <button type="submit">submit</button>
             <% if(pageTitle === "Signup") {%>
                 <p>Already have an account? <a href="/login" >Login</a></p>

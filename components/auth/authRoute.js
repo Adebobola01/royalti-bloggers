@@ -46,11 +46,22 @@ router.post("/login", async (req, res, next)=>{
         }
         req.session.isLoggedIn = true;
         req.session.user = user;
+        req.session.save();
     } catch (error) {
         req.flash("loginErr", error.message);
         console.log(error)
         return res.redirect("/login");
     }
-    res.redirect("/");
+    res.redirect("/profile/:userId");
 })
+
+exports.postLogout = ("/logout", async(req, res, next) => {
+    try {
+        await req.session.destroy()
+    } catch (error) {
+        console.log(err);
+        res.redirect("/login");
+    }
+});
+
 module.exports = router;
