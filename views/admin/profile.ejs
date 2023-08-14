@@ -1,0 +1,58 @@
+<%- include("../includes/head.ejs")  %>
+    <link rel="stylesheet" href="/css/main.css" >
+    <link rel="stylesheet" href="/css/home.css" >
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <%- include("../includes/header.ejs", {isAuth: isAuthenticated, user: user})%>
+    <main>
+        <%- include("../includes/sidebar.ejs") %>
+        <section class="main">
+            <div class="profile-title" >
+                <h2><%= user.name %></h2>
+            </div>
+            <div class="profile-blogs" >
+                <div class="blogs"> 
+                    <% if (blogs.length > 0) { %>
+                        <% for (let blog of blogs) { %>
+                            <div class="blog-container" >
+                                <div class="title-container" >
+                                    <div class="title-details">
+                                        <%= blog.createdAt %>
+                                    </div>
+                                    <h2><%= blog.title %></h2>
+                                </div>
+                                <p class="blog-content" >
+                                    <%= blog.content %>
+                                </p>
+                                <div class="admin-ctas" >
+                                    <button class="blog-btn" ><%= blog.tag %></button>
+                                    <div>
+                                        <a href="/admin/edit/<%= blog._id %>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <path d="M2.5 17H3.9L12.525 8.375L11.125 6.975L2.5 15.6V17ZM16.8 6.925L12.55 2.725L13.95 1.325C14.3333 0.941667 14.8043 0.75 15.363 0.75C15.9217 0.75 16.3923 0.941667 16.775 1.325L18.175 2.725C18.5583 3.10833 18.7583 3.571 18.775 4.113C18.7917 4.655 18.6083 5.11733 18.225 5.5L16.8 6.925ZM15.35 8.4L4.75 19H0.5V14.75L11.1 4.15L15.35 8.4ZM11.825 7.675L11.125 6.975L12.525 8.375L11.825 7.675Z" fill="white"/>
+                                            </svg>
+                                            <span>
+                                                Edit
+                                            </span>
+                                        </a>
+                                        <a href="/admin/delete/<%= blog._id %>" class="red" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <path d="M2.5 17H3.9L12.525 8.375L11.125 6.975L2.5 15.6V17ZM16.8 6.925L12.55 2.725L13.95 1.325C14.3333 0.941667 14.8043 0.75 15.363 0.75C15.9217 0.75 16.3923 0.941667 16.775 1.325L18.175 2.725C18.5583 3.10833 18.7583 3.571 18.775 4.113C18.7917 4.655 18.6083 5.11733 18.225 5.5L16.8 6.925ZM15.35 8.4L4.75 19H0.5V14.75L11.1 4.15L15.35 8.4ZM11.825 7.675L11.125 6.975L12.525 8.375L11.825 7.675Z" fill="white"/>
+                                            </svg>
+                                            <span>
+                                                delete
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <h1>No Blogs Found!</h1>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

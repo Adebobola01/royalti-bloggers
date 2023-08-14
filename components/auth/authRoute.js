@@ -55,7 +55,7 @@ router.post("/login", async (req, res, next)=>{
         console.log(error)
         return res.redirect("/login");
     }
-    res.redirect("/profile/:userId");
+    res.redirect(`admin/profile/${req.user._id}`);
 })
 
 router.get("/logout", async(req, res, next) => {

@@ -10,7 +10,7 @@ body{
 .sidebar{
     position: fixed;
     left: 0;
-    top: 90px;
+    top: 69px;
     /* bottom: 0; */
     /* height: 100vh; */
     border-right: 1px solid #000;
@@ -54,7 +54,7 @@ main{
 
 .main{
     padding: 1rem 3rem;
-    margin-left: 164px;
+    margin-left: 174px;
     z-index: 1;
 }
 
@@ -91,6 +91,7 @@ header > h2{
     font-weight: 700;
     font-size: 2rem;
     color: #3217DA;
+    margin: 1rem 0;
 }
 
 header > a{
@@ -106,4 +107,9 @@ header > a:hover{
 .profile-link{
     display: flex;
     align-items: center;
+}
+
+.profile-title{
+    padding: 0 0 2rem;
+    border-bottom: 1px solid #000;
 }

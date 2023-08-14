@@ -31,3 +31,8 @@ exports.findBlogPersistence = async(blogId)=>{
     const blog = await Blog.findOne({_id: blogId});
     return blog;
 }
+
+exports.getAdminBlogs = async(userId)=>{
+    const blogs = await Blog.find({authorId: userId});
+    return blogs;
+}

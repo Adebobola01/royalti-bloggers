@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {editBlog, createBlog, deleteBlog} = require("./adminInteractor");
-const {findBlogPersistence} = require("./adminPersistence");
+const {findBlogPersistence, getAdminBlogs} = require("./adminPersistence");
 
 
 router.get("editBlog", (req, res, next)=>{
@@ -38,6 +38,16 @@ router.post("/deleteBlog", (req, res, next)=>{
     const {blogId} = req.body;
     deleteBlog(blogId);
     res.redirect("/")
+});
+
+router.get("/profile/:userId", async(req, res, next)=>{
+    const {userId} = req.params;
+    const blogs = await getAdminBlogs(userId);
+    console.log(userId);
+    res.render("admin/profile", {
+        user: req.user,
+        blogs: blogs
+    })
 })
 
 module.exports = router;

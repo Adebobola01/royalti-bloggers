@@ -1,0 +1,34 @@
+.blogs{
+    margin-top: 2rem;
+}
+
+.admin-ctas{
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-ctas > div{
+    display: flex;
+}
+
+.admin-ctas > div > a{
+    text-decoration: none;
+    padding: .7rem;
+    color: #fff;
+    background-color: #3217DA;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    font-size: .9rem;
+}
+
+.admin-ctas > div > a > svg{
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.red{
+    background-color: red !important;
+    margin-left: .5rem;
+}
