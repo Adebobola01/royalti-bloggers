@@ -58,12 +58,12 @@ router.post("/login", async (req, res, next)=>{
     res.redirect("/profile/:userId");
 })
 
-exports.postLogout = ("/logout", async(req, res, next) => {
+router.get("/logout", async(req, res, next) => {
     try {
         await req.session.destroy()
+        res.redirect("/login");
     } catch (error) {
         console.log(err);
-        res.redirect("/login");
     }
 });
 
