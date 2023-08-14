@@ -2,11 +2,12 @@
 
 const Blog = require("../../models/blog");
 
-exports.createBlogPersistence = async (title, content, authorId) =>{
+exports.createBlogPersistence = async (title, content, authorId, authorName) =>{
     const newBlog = await new Blog({
         title: title,
         content: content,
         authorId: authorId,
+        authorName: authorName,
         createdAt: Date.now(),
         updatedAt: Date.now(),
     }).save();

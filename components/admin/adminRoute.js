@@ -27,7 +27,8 @@ router.get("/createBlog", (req, res, next)=>{
 router.post("/createBlog", async (req, res, next)=>{
     const {title, content, authorId} = req.body;
     console.log(title, content)
-    const newBlog = await createBlog(title, content, req.user._id);
+    console.log(req.user);
+    const newBlog = await createBlog(title, content, req.user._id, req.user.name);
     // res.redirect(`/blog/${newBlog._id}`);
     res.redirect("/");
 
