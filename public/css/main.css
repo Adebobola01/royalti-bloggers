@@ -33,6 +33,10 @@ body{
     font-weight: 900;
 }
 
+.sidebar > nav > a > span{
+    margin-left: .5rem;
+}
+
 .sidebar > nav > a, .sidebar > div > span{
     text-decoration: none;
     color: #000;
@@ -40,6 +44,8 @@ body{
     padding: 1rem 0;
     font-size: 1rem;
     cursor: pointer;
+    display: flex;
+    /* justify-content: space-between; */
 }
 
 .sidebar > nav > a:hover, .sidebar > div > span:hover{
@@ -107,6 +113,12 @@ header > a:hover{
 .profile-link{
     display: flex;
     align-items: center;
+}
+
+.profile-link > svg{
+    width: 2rem;
+    height: 2rem;
+    margin-right: .5rem;
 }
 
 .profile-title{

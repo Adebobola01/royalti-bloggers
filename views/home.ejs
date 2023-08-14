@@ -12,7 +12,7 @@
             <div class="blogs"> 
                 <% if (blogs.length > 0) { %>
                     <% for (let blog of blogs) { %>
-                        <a href="/blog/id" class="blog-container" >
+                        <a href="/blog/<%= blog._id %>" class="blog-container" >
                             <div class="title-container" >
                                 <div class="title-details">
                                     <span></span>
@@ -32,7 +32,9 @@
                 <% } %>
             </div>
             <div class="pagination" >
-                 
+                <% for (let i = 0; i < numArray.length; i++) { %>
+                    <a href="?page=<%= i + 1 %>" class="<%= currentPage === i + 1 ? 'current' : 'null' %>" > <%= i + 1 %> </a>
+                <% } %>
             </div>
             
         </section>

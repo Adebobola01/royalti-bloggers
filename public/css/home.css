@@ -60,3 +60,18 @@
     font-weight: 500;
     font-size: 1rem;
 }
+
+.pagination{
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > a {
+    margin-right: .5rem;
+}
+
+.current{
+    color: #000;
+    text-decoration: none;
+}

@@ -5,16 +5,19 @@ const {getBlogsPersistence} = require("./homePersistence");
 
 router.get("/", async(req, res, next)=>{
     try {
-        console.log(req.session.isLoggedIn);
         const pageNum = +req.query.page || 1;
         const {blogs, totalBlogs} = await getBlogsPersistence({pageNum, NUMBER_PER_PAGE});
-        console.log(blogs);
+        const numArray = Array.from({length: Math.ceil(totalBlogs / NUMBER_PER_PAGE)}, ()=> "");
+        console.log(pageNum)
+
+        console.log(numArray);
         res.render("home", {
             pageTitle: "home",
             totalBlogs: totalBlogs,
             blogs: blogs,
             numOfPages: Math.ceil(totalBlogs / NUMBER_PER_PAGE),
-            currentPage: pageNum
+            currentPage: pageNum,
+            numArray: numArray,
         })
     } catch (error) {
         console.log(error);
