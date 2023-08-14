@@ -1,7 +1,6 @@
 <%- include("./includes/head.ejs") %>
     <title> home</title>
     <link rel="stylesheet" href="/css/home.css" >
-
 </head>
 <body>
     <%- include("./includes/header.ejs", {isAuth: isAuthenticated, user: user}) %>
@@ -33,7 +32,7 @@
             </div>
             <div class="pagination" >
                 <% for (let i = 0; i < numArray.length; i++) { %>
-                    <a href="?page=<%= i + 1 %>" class="<%= currentPage === i + 1 ? 'current' : 'null' %>" > <%= i + 1 %> </a>
+                    <a href="?page=<%= i + 1 %>&s=<%= searchParam %>" class="<%= currentPage === i + 1 ? 'current' : 'null' %>" > <%= i + 1 %> </a>
                 <% } %>
             </div>
             

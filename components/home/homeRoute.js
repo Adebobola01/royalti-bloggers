@@ -8,9 +8,6 @@ router.get("/", async(req, res, next)=>{
         const pageNum = +req.query.page || 1;
         const {blogs, totalBlogs} = await getBlogsPersistence({pageNum, NUMBER_PER_PAGE});
         const numArray = Array.from({length: Math.ceil(totalBlogs / NUMBER_PER_PAGE)}, ()=> "");
-        console.log(pageNum)
-
-        console.log(numArray);
         res.render("home", {
             pageTitle: "home",
             totalBlogs: totalBlogs,
@@ -18,6 +15,7 @@ router.get("/", async(req, res, next)=>{
             numOfPages: Math.ceil(totalBlogs / NUMBER_PER_PAGE),
             currentPage: pageNum,
             numArray: numArray,
+            searchParam: ""
         })
     } catch (error) {
         console.log(error);
