@@ -125,3 +125,57 @@ header > a:hover{
     padding: 0 0 2rem;
     border-bottom: 1px solid #000;
 }
+
+.details-header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #000;
+}
+
+.details-content{
+    margin: 2rem 0;
+}
+
+.details-author{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.details-author > svg{
+    width: 3rem;
+    height: 3rem;
+    margin-right: 2rem;
+}
+
+.details-footer{
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+
+
+.details-footer > svg{
+    width: 4rem;
+    height: 4rem;
+}
+
+.details-footer-text{
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.details-footer-text > p{
+    margin: 1rem 0 0;
+}
+
+.details-footer-text > span{
+    color: grey;
+    font-size: .8rem;
+}

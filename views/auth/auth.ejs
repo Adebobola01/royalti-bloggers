@@ -37,6 +37,8 @@
             <button type="submit">submit</button>
             <% if(pageTitle === "Signup") {%>
                 <p>Already have an account? <a href="/login" >Login</a></p>
+            <% } else {%>
+                <p>Don't have an account? <a href="/signup" >Register</a></p>
             <% } %>
         </form>
     </main>

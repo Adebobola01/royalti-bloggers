@@ -17,7 +17,6 @@ router.get("/signup", (req, res, next)=>{
 
 router.post("/signup", async(req, res, next)=>{
     const {email, name, password} = req.body;
-    console.log(email, password, name)
     const hash = await bcrypt.hash(password, 10)
     try {
         await createUserInteractor(email, hash, name);
@@ -39,9 +38,8 @@ router.get("/login", (req, res, next)=>{
 
 router.post("/login", async (req, res, next)=>{
     const {email, password} = req.body;
-
+    const user = await loginInteractor({email});
     try {
-        const user = await loginInteractor({email});
         const hash = user.password;
         const isEqual = await bcrypt.compare(password, hash);
         if(!isEqual){
@@ -55,7 +53,7 @@ router.post("/login", async (req, res, next)=>{
         console.log(error)
         return res.redirect("/login");
     }
-    res.redirect(`admin/profile/${req.user._id}`);
+    res.redirect(`admin/profile/${user._id}`);
 })
 
 router.get("/logout", async(req, res, next) => {

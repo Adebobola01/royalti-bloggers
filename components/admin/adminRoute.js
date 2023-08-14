@@ -7,7 +7,6 @@ const {findBlogPersistence, getAdminBlogs} = require("./adminPersistence");
 router.get("/edit/:blogId", async(req, res, next)=>{
     const {blogId} = req.params;
     const blog = await findBlogPersistence(blogId);
-    console.log(blog);
     res.render("admin/create", {
         title: "Edit",
         blogTitle: blog.title,
@@ -27,14 +26,14 @@ router.post("/edit/:blogId", async(req, res, next)=>{
 
 router.get("/createBlog", (req, res, next)=>{
     res.render("admin/create", {
-        title: "Create"
+        title: "Create",
+        blogTitle: "",
+        blogContent: ""
     })
 })
 
 router.post("/createBlog", async (req, res, next)=>{
     const {title, content, authorId} = req.body;
-    console.log(title, content)
-    console.log(req.user);
     const newBlog = await createBlog(title, content, req.user._id, req.user.name);
     res.redirect(`/admin/profile/${req.user._id}`);
 
