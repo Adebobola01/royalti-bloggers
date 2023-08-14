@@ -4,7 +4,7 @@
 
 </head>
 <body>
-    <%- include("./includes/header.ejs") %>
+    <%- include("./includes/header.ejs", {isAuth: isAuthenticated, userId: userId}) %>
     <main>
         <%- include("./includes/sidebar.ejs") %>
         <section class="main">
@@ -32,7 +32,7 @@
                 <% } %>
             </div>
             <div class="pagination" >
-                
+                 
             </div>
             
         </section>

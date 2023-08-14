@@ -7,6 +7,13 @@
         <input type="text" placeholder="Search bloggers" >
         <button type="submit" hidden >submit</button>
     </form>
-    <!-- <span></span> -->
-    <a href="/signup" >Sign in/ login</a>
+    <% if(isAuth) {%>
+        <a class="profile-link" href="/profile/:<%= userId %>" >
+            <span></span>
+            Profile
+        </a>
+        <a class="logout" href="/logout" >logout</a> 
+    <% } else { %>
+        <a href="/signup" >Sign in / login</a>
+    <% } %>
 </header>
