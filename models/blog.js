@@ -26,6 +26,11 @@ const blogSchema = new Schema({
     updatedAt: {
         type: Date,
         required: true
+    },
+    tag: {
+        type: String,
+        default: "Blog post",
+        required: false
     }
 })
 
