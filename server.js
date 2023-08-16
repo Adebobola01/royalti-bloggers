@@ -15,10 +15,10 @@ const {MONGODB_URI, PORT} = require("./config");
 
 const csrfProtection = csrf();
 
-// const store = new MongoDbStore({
-//     uri: MONGODB_URI,
-//     collection: "sessions",
-// });
+const store = new MongoDbStore({
+    uri: MONGODB_URI,
+    collection: "sessions",
+});
 
 const app = express();
 
@@ -34,7 +34,7 @@ app.use(session({
     secret: 'keyboard cat my session',
     resave: false,
     saveUninitialized: true,
-    // store: store,
+    store: store,
     cookie: { secure: false }
 }));
 app.use(flash());  
@@ -65,14 +65,14 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-// mongoose
-//     .connect(MONGODB_URI)
-//     .then(async (result) => {
+mongoose
+    .connect(MONGODB_URI)
+    .then(async (result) => {
         app.listen(PORT, () => {
             console.log("connected at localhost:3000");
         });
-//     })
-//     .catch((error) => {
-//         console.log(error)
-//     }
-// );
+    })
+    .catch((error) => {
+        console.log(error)
+    }
+);
