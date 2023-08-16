@@ -45,12 +45,15 @@ body{
     font-size: 1rem;
     cursor: pointer;
     display: flex;
+    align-items: center;
     /* justify-content: space-between; */
 }
 
-.sidebar > nav > a:hover, .sidebar > div > span:hover{
+.sidebar > nav > a:hover, .sidebar > div > span:hover, .sidebar > nav > a:hover > svg > path{
     color: #3217DA;
+    fill: #3217DA;
 }
+
 
 main{
     position: relative;
