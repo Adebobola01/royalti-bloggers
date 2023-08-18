@@ -1,6 +1,6 @@
 //This file contain all the business logic of the app
 
-const {createBlogPersistence, deleteBlogPersistence, editBlogPersistence} = require("./adminPersistence");
+const {createBlogPersistence, deleteBlogPersistence, editBlogPersistence, findBlogPersistence} = require("./adminPersistence");
 
 
 exports.createBlog = async(title, content, author) =>{
@@ -29,7 +29,14 @@ exports.deleteBlog = async(blogId)=>{
     }
 }
 
-exports.editBlog = async (title, content, blogId)=>{
-    const updatedBlog = await editBlogPersistence(title, content, blogId);
-    return updatedBlog;
+exports.editBlog = async ({title, content, blogId, user})=>{
+    try {
+        const blog = await findBlogPersistence(blogId);
+        if(blog.authorId !== user._id || !user ){
+            throw new Error("User is not authorized to edit blog");
+        }
+        await editBlogPersistence(title, content, blogId);
+    } catch (error) {
+        throw error;
+    }
 }

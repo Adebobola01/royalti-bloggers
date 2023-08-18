@@ -32,13 +32,14 @@ router.get("/edit/:blogId", async(req, res, next)=>{
         title: "Edit",
         blogTitle: blog.title,
         blogContent: blog.content,
+        errMsg: req.flash("editError")
     })
 })
 
 router.post("/edit/:blogId", async(req, res, next)=>{
     try {
         const {title, content, blogId} = req.body;
-        const updatedBlog = await editBlog(title, content, blogId);
+        await editBlog({title, content, blogId, user:req.user});
     } catch (error) {
         console.log(error);
     }
