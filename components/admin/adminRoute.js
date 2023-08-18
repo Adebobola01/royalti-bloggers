@@ -4,6 +4,27 @@ const {editBlog, createBlog, deleteBlog} = require("./adminInteractor");
 const {findBlogPersistence, getAdminBlogs} = require("./adminPersistence");
 
 
+router.get("/createBlog", (req, res, next)=>{
+    res.render("admin/create", {
+        title: "Create",
+        blogTitle: "",
+        blogContent: "",
+        errMsg: req.flash("createError")
+    })
+})
+
+router.post("/createBlog", async (req, res, next)=>{
+    try {
+        const {title, content} = req.body;
+        const newBlog = await createBlog(title, content, req.user);
+        res.redirect(`/admin/profile/${req.user._id}`);
+        
+    } catch (error) {
+        req.flash("createError", error.message);
+    }
+
+})
+
 router.get("/edit/:blogId", async(req, res, next)=>{
     const {blogId} = req.params;
     const blog = await findBlogPersistence(blogId);
@@ -24,20 +45,7 @@ router.post("/edit/:blogId", async(req, res, next)=>{
     res.redirect(`/admin/profile/${req.user._id}`);
 })
 
-router.get("/createBlog", (req, res, next)=>{
-    res.render("admin/create", {
-        title: "Create",
-        blogTitle: "",
-        blogContent: ""
-    })
-})
 
-router.post("/createBlog", async (req, res, next)=>{
-    const {title, content, authorId} = req.body;
-    const newBlog = await createBlog(title, content, req.user._id, req.user.name);
-    res.redirect(`/admin/profile/${req.user._id}`);
-
-})
 
 router.get("/delete/:blogId", async(req, res, next)=>{
     const {blogId} = req.params;

@@ -6,6 +6,11 @@
     <main>
         <%- include("../includes/sidebar.ejs") %>
         <section class="main">
+            <% if(errMsg) {%>
+                <p class="errorMsg" >
+                    <%= errMsg %>
+                </p>
+            <% } %>
             <form method="post" action="/admin/createBlog" class="create-form" >
                 <button type="submit" class="create-form-btn" ><%= title %> Post</button>
                 <input type="text" placeholder="Post Title ....." class="post-title-input" name="title" value="<%= blogTitle %>" />
