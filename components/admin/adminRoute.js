@@ -41,6 +41,7 @@ router.post("/edit/:blogId", async(req, res, next)=>{
         const {title, content, blogId} = req.body;
         await editBlog({title, content, blogId, user:req.user});
     } catch (error) {
+        req.flash("editError", error.message);
         console.log(error);
     }
     res.redirect(`/admin/profile/${req.user._id}`);
