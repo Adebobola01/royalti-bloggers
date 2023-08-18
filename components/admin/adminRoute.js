@@ -47,12 +47,10 @@ router.post("/edit/:blogId", async(req, res, next)=>{
     res.redirect(`/admin/profile/${req.user._id}`);
 })
 
-
-
 router.get("/delete/:blogId", async(req, res, next)=>{
     const {blogId} = req.params;
     try {
-       await deleteBlog(blogId);
+       await deleteBlog({blogId, user: req.user});
     } catch (error) {
         req.flash("deleteError", error.message);
     }

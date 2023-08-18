@@ -20,15 +20,6 @@ exports.createBlog = async(title, content, author) =>{
     }
 }
 
-exports.deleteBlog = async(blogId)=>{
-    try {
-        const deletedBlog = await deleteBlogPersistence(blogId);
-        return deletedBlog;
-    } catch (error) {
-        throw error;
-    }
-}
-
 exports.editBlog = async ({title, content, blogId, user})=>{
     try {
         const blog = await findBlogPersistence(blogId);
@@ -36,6 +27,18 @@ exports.editBlog = async ({title, content, blogId, user})=>{
             throw new Error("User is not authorized to edit blog");
         }
         await editBlogPersistence(title, content, blogId);
+    } catch (error) {
+        throw error;
+    }
+}
+
+exports.deleteBlog = async({blogId, user})=>{
+    try {
+        const blog = await findBlogPersistence(blogId);
+        if(!user || user._id !== blog.authorId){
+            throw new Error("User isn't authorized to delete blog");
+        }
+        const deletedBlog = await deleteBlogPersistence(blogId);
     } catch (error) {
         throw error;
     }
