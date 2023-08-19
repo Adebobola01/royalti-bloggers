@@ -5,9 +5,8 @@ const {createBlogPersistence, deleteBlogPersistence, editBlogPersistence, findBl
 
 exports.createBlog = async(title, content, author) =>{
     try {
-
+        
         //checks to validate blog title and content
-
         if(title.length < 3){
             throw new Error("blog title can't be less than 3 characters");
         }
@@ -31,7 +30,6 @@ exports.editBlog = async ({title, content, blogId, user})=>{
             throw new Error("blog title can't be less than 3 characters");
         }
         else if(content.length < 5) throw new Error("Blog content can't be less than 5 characters");
-
         await editBlogPersistence(title, content, blogId);
     } catch (error) {
         throw error;

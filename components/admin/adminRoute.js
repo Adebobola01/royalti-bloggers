@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {editBlog, createBlog, deleteBlog} = require("./adminInteractor");
 const {findBlogPersistence, getAdminBlogs} = require("./adminPersistence");
+const {dateHandler} = require("../../util/dateHandler")
 
 
 router.get("/createBlog", (req, res, next)=>{
@@ -10,7 +11,7 @@ router.get("/createBlog", (req, res, next)=>{
         title: "Create",
         blogTitle: "",
         blogContent: "",
-        formAction: "/createBlog",
+        formAction: "/admin/createBlog",
         errMsg: reqFlash.length > 0 ? reqFlash : "",
     })
 })
@@ -66,9 +67,16 @@ router.get("/profile/:userId", async(req, res, next)=>{
     const reqFlash = req.flash("deleteError");
     const {userId} = req.params;
     const blogs = await getAdminBlogs(userId);
+    const newBlogs = blogs.map(b => {
+        const updateBlog = {
+            ...b._doc,
+            createdAt: dateHandler(b.createdAt)
+        }
+        return updateBlog;
+    })
     res.render("admin/profile", {
         user: req.session.user,
-        blogs: blogs,
+        blogs: newBlogs,
         errMsg: reqFlash.length > 0 ? reqFlash : "",
     })
 })

@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const NUMBER_PER_PAGE = 2;
 const {getAllBlogsPersistence, getBlogPersistence} = require("./blogPersistence");
+const {getAllBlogsInteractor} = require("./blogInteractor");
 
 router.get("/", async(req, res, next)=>{
     try {
         const pageNum = +req.query.page || 1;
-        const {blogs, totalBlogs} = await getAllBlogsPersistence({pageNum, NUMBER_PER_PAGE});
+        const {blogs, totalBlogs} = await getAllBlogsInteractor({pageNum, NUMBER_PER_PAGE});
         const numArray = Array.from({length: Math.ceil(totalBlogs / NUMBER_PER_PAGE)}, ()=> "");
         res.render("home", {
             pageTitle: "home",
