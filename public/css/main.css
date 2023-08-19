@@ -7,6 +7,17 @@ body{
     margin: 0;
 }
 
+.errorMsg{
+    background-color: red;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.3rem;
+    padding: .7rem;
+}
+
 .sidebar{
     position: fixed;
     left: 0;
@@ -65,6 +76,7 @@ main{
     padding: 1rem 3rem;
     margin-left: 174px;
     z-index: 1;
+    position: relative;
 }
 
 header{

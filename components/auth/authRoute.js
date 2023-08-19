@@ -28,11 +28,12 @@ router.post("/signup", async(req, res, next)=>{
 })
 
 router.get("/login", (req, res, next)=>{
+    const reqFlash = req.flash("loginErr");
     res.render("auth/auth", {
         pageTitle: "Login",
         pageHeader: "Login",
         formAction: "/login",
-        errMsg: req.flash("loginErr")
+        errMsg: reqFlash.length > 0 ? reqFlash : "",
     });
 })
 
@@ -49,8 +50,7 @@ router.post("/login", async (req, res, next)=>{
         req.session.user = user;
         req.session.save();
     } catch (error) {
-        req.flash("loginErr", error.message);
-        console.log(error)
+        await req.flash("loginErr", error.message);
         return res.redirect("/login");
     }
     res.redirect(`admin/profile/${user._id}`);

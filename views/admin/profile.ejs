@@ -8,6 +8,11 @@
     <main>
         <%- include("../includes/sidebar.ejs") %>
         <section class="main">
+            <% if(errMsg) {%>
+                <p class="errorMsg" >
+                    <%= errMsg %>
+                </p>
+            <% } %>
             <div class="profile-title" >
                 <h2><%= user.name %></h2>
             </div>

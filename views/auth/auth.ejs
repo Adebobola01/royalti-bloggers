@@ -6,7 +6,7 @@
     <main>
         <% if(errMsg) {%>
             <p class="errorMsg" >
-                <%= errMsg %>
+                <%= errMsg[0] %>
             </p>
         <% } %>
         <form action="<%= formAction %>" method="post" class="auth-form">
